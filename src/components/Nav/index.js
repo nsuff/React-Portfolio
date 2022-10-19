@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react';
-import { capitalizeFirstLetter } from '../../utils/helpers';
+import React from 'react';
+
 
 function Nav(props) {
   const {
-    categories = [],
-    setCurrentCategory,
     contactSelected,
     aboutSelected,
     resumeSelected,
-    currentCategory,
+    portfolioSelected,
+    setPortfolioSelected,
     setContactSelected,
     setAboutSelected,
     setResumeSelected
   } = props;
 
-  useEffect(() => {
-    document.title = capitalizeFirstLetter(currentCategory.name);
-  }, [currentCategory]);
+  // useEffect(() => {
+  //   document.title = capitalizeFirstLetter(currentCategory.name);
+  // }, [currentCategory]);
 
   return (
     <header className="flex-row px-1">
@@ -25,28 +24,20 @@ function Nav(props) {
           Portfolio
         </a>
       </h2>
-      <nav>
+      <nav style={{border: '1px solid red'}}>
         <ul className="flex-row">
-          {categories.map((category) => (
-            <li
-              className={`mx-1 ${
-                currentCategory.name === category.name && !contactSelected && 'navActive'
-                }`}
-              key={category.name}
-            >
-              <span
-                onClick={() => {
-                  setCurrentCategory(category);
-                  setContactSelected(false);
-                }}
-              >
-                {capitalizeFirstLetter(category.name)}
-              </span>
-            </li>
-          ))}
+          <li className={`mx-2 ${portfolioSelected && 'navActive'}`}>
+            <span onClick={() => {
+              setPortfolioSelected(true);
+              setAboutSelected(false);
+              setResumeSelected(false);
+              setContactSelected(false);
+              }}>Portfolio</span>
+          </li>
           <li className={`mx-2 ${aboutSelected && 'navActive'}`}>
             <span onClick={() => {
               setAboutSelected(true);
+              setPortfolioSelected(false);
               setResumeSelected(false);
               setContactSelected(false);
               }}>About Me</span>
@@ -54,6 +45,7 @@ function Nav(props) {
           <li className={`mx-2 ${resumeSelected && 'navActive'}`}>
             <span onClick={() => {
               setResumeSelected(true);
+              setPortfolioSelected(false);
               setAboutSelected(false);
               setContactSelected(false);
               }}>Resume</span>
@@ -61,6 +53,7 @@ function Nav(props) {
           <li className={`mx-2 ${contactSelected && 'navActive'}`}>
             <span onClick={() => {
               setContactSelected(true);
+              setPortfolioSelected(false);
               setAboutSelected(false);
               setResumeSelected(false);
               }}>Contact</span>
