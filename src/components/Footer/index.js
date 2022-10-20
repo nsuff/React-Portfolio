@@ -11,6 +11,7 @@ function Footer() {
   return (
     <footer className="flex-row px-1">
       HAVE A GOOD DAY!
+      <a href='https://github.com/nsuff'>Github</a>
     </footer>
   );
 }
