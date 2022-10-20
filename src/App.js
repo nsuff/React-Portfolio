@@ -4,10 +4,11 @@ import Nav from './components/Nav';
 import Portfolio from './components/Portfolio';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 
 function App() {
-
+  document.title = 'Portfolio';
   // const [categories] = useState([
   //   {
   //     name: 'smartpot',
@@ -45,9 +46,6 @@ function App() {
         setPortfolioSelected={setPortfolioSelected}
       ></Nav>
       <main>
-        {aboutSelected ? (
-          <About></About>
-        ) : (<></>) }
         {portfolioSelected ? (
           <Portfolio></Portfolio>
         ) : (<></>) }
@@ -57,7 +55,11 @@ function App() {
         {contactSelected ? (
           <Contact></Contact>
         ) : (<></>) }
+        {!portfolioSelected && !contactSelected && !resumeSelected ? (
+          <About></About>
+        ) : (<></>) }
       </main>
+      <Footer />
     </div>
   );
 }

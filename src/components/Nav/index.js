@@ -20,12 +20,12 @@ function Nav(props) {
   return (
     <header className="flex-row px-1">
       <h2>
-        <a href="/">
-          Portfolio
+        <a href="/" className='text-danger'>
+          Nino Suffoletta
         </a>
       </h2>
-      <nav style={{border: '1px solid red'}}>
-        <ul className="flex-row">
+      <nav className='w-100 border-bottom border-info'>
+        <ul className="flex-row text-primary">
           <li className={`mx-2 ${portfolioSelected && 'navActive'}`}>
             <span onClick={() => {
               setPortfolioSelected(true);
